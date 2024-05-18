@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog | Home</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
     <div class="posts">
-        <a class="btn" href="/posts/new">Create new post</a>
-        <% for(post of posts){ %>
-            <div class="post">
-                <h3 class="username"> @<%= post.username  %> </h3>
-                <p class="content"><%= post.content %></p>
-                <span><a href="/posts/<%=post.id%>">See in detail</a></span>
-            </div>
-        <% } %>
+      <a class="btn" href="/posts/new">Create new post</a>
+      <% for(post of posts){ %>
+      <div class="post">
+        <h3 class="username">@<%= post.username %></h3>
+        <p class="content"><%= post.content %></p>
+        <span><a href="/posts/<%=post.id%>">See in detail</a></span>
+        <span
+          ><a href="/posts/<%=post.id%>/edit" style="text-decoration: none"
+            >&nbsp;&nbsp;&nbsp; Edit</a
+          ></span
+        >&nbsp;&nbsp;&nbsp;
+        <form method="post" action="/posts/<%=post.id%>?_method=DELETE">
+            <input type="submit" value="Delete">
+        </form>
+      </div>
+      <% } %>
     </div>
-</body>
+  </body>
 </html>
